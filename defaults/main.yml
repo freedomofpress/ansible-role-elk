@@ -76,3 +76,10 @@ elk_kibana_default_app: discover
 # Enable automatic configuration of IP whitelisting for "logclients".
 # Uses ufw. Disable if you're using a different role for firewall config.
 elk_configure_firewall: true
+
+# Default thresholds for triggering Riemann events / Slack alerts
+# upon load, memory, and disk utilization.  For per-host values,
+# set logstash_alert_*_custom_thresholds in host_vars/all.
+logstash_alert_disk_threshold: 0.90
+logstash_alert_load_threshold: 2.0
+logstash_alert_mem_threshold: 0.95

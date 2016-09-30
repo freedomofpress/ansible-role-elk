@@ -42,6 +42,33 @@ elk_kibana_password: kibana
 # dashboard names with hyphens, since Kibana expects it.
 elk_kibana_default_app: discover
 
+# Default thresholds for triggering Riemann events / Slack alerts
+# upon load, memory, and disk utilization.  For per-host values,
+# set logstash_alert_*_custom_thresholds in host_vars/all.
+logstash_alert_disk_threshold: 0.9
+logstash_alert_load_threshold: 2.0
+logstash_alert_mem_threshold: 0.9
+```
+
+Example per-host custom alert thresholds:
+
+```yaml
+logstash_alert_disk_custom_thresholds:
+  - hostname: one.example.com
+    value: 0.75
+
+logstash_alert_load_custom_thresholds:
+  - hostname: two.example.com
+    value: 3.0
+  - hostname: three.example.com
+    value: 2.0
+
+logstash_alert_mem_custom_thresholds:
+  - hostname: four.example.com
+    value: 0.80
+  - hostname: five.example.com
+    value: 0.95
+
 ```
 
 ## Usage
