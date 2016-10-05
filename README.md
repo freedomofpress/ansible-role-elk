@@ -44,7 +44,7 @@ elk_kibana_default_app: discover
 
 # Default thresholds for triggering Riemann events / Slack alerts
 # upon load, memory, and disk utilization.  For per-host values,
-# set logstash_alert_*_custom_thresholds in host_vars/all.
+# set logstash_alert_*_custom_thresholds in group_vars/all.
 logstash_alert_disk_threshold: 0.9
 logstash_alert_load_threshold: 2.0
 logstash_alert_mem_threshold: 0.9
