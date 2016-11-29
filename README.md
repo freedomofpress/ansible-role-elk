@@ -44,7 +44,7 @@ elk_kibana_default_app: discover
 
 # Some users log in so frequently that you don't want to alert
 # for them. List those here.
-logstash_alert_ssh_silenced_users: []
+elk_logstash_alert_ssh_silenced_users: []
 
 ```
 
