@@ -1,0 +1,41 @@
+---
+- name: Add Curator apt repo.
+  apt_repository:
+    repo: "deb http://packages.elastic.co/curator/5/debian stable main"
+    state: present
+
+- name: Install Curator.
+  apt:
+    name: elasticsearch-curator
+    state: latest
+    update_cache: yes
+
+- name: Create Curator configuration directory.
+  file:
+    path: /etc/curator
+    state: directory
+    mode: "0755"
+    owner: root
+    group: root
+
+- name: Copy Curator configuration.
+  file:
+    src: curator.yml
+    dest: "/etc/curator/curator.yml"
+    mode: "0644"
+    owner: root
+    group: root
+
+- name: Copy Curator script to delete old indices.
+  template:
+    src: delete_indices.yml.j2
+    dest: "/etc/curator/delete_indices.yml"
+    mode: "0644"
+    owner: root
+    group: root
+
+- name: Add cron job to run Curator regularly.
+  cron:
+    name: "delete old elasticsearch indices"
+    job: "curator /etc/curator/delete_indices.yml --config /etc/curator/curator.yml"
+    special_time: "weekly"

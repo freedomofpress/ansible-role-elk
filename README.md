@@ -101,6 +101,13 @@ elk_logstash_filters:
 
 # Declare fileglob of GeoIP databases to copy. Off by default.
 elk_logstash_geoipdbs: []
+
+# Sets up Curator to automatically delete old Logstash indices and save
+# disk space. Off by default.
+elk_configure_curator: false
+
+# Indexes older than this number of days will be deleted on a weekly basis
+elk_curator_days_to_keep: 90
 ```
 
 ## Usage
